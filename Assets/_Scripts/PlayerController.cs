@@ -5,9 +5,21 @@ using Util;
 
 public class PlayerController : MonoBehaviour
 {
-
-    public Speed speed;
+    //speed and boundary
+    public float speed;
     public Boundary boundary;
+    //bullet shooting settings
+    [Header("shooting settings")]
+    public GameObject bullet;
+    public GameObject bulletspawn;
+    public float fireRate = 0.5f;
+    //explosion
+    [Header("explosion settings")]
+    public GameObject explosion;
+
+    //rigidbody
+    private Rigidbody2D rbody;
+    public float myTime = 0.0f;
 
     public GameController gameController;
 
@@ -15,65 +27,54 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        rbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        myTime += Time.deltaTime;
+        if(Input.GetButton("Fire1") && myTime > fireRate)
+        {
+            Instantiate(bullet, bulletspawn.transform.position, bulletspawn.transform.rotation).GetComponent<Rigidbody>(); ;
+            myTime = 0.0f;
+        }
         Checkbounds();
     }
 
-    public void Move()
+    void FixedUpdate()
     {
-        Vector2 newPosition = transform.position;
+        //reads input
+        float horiz = Input.GetAxis("Horizontal");
+        float vert = Input.GetAxis("Vertical");
 
-        //horizontal
-        if (Input.GetAxis("Horizontal") > 0.0f)
-        {
-            newPosition += new Vector2(speed.max, 0.0f);
-        }
-
-        if (Input.GetAxis("Horizontal") < 0.0f)
-        {
-            newPosition += new Vector2(speed.min, 0.0f);
-        }
-
-        //vertical
-        if (Input.GetAxis("Vertical") > 0.0f)
-        {
-            newPosition += new Vector2(speed.max, 0.0f);
-        }
-        if( Input.GetAxis("Vertical") > 0.0f)
-        {
-            newPosition += new Vector2(speed.min, 0.0f);
-        }
+        Vector2 movement = new Vector2(horiz, vert);
+        //moves the player
+        rbody.velocity = movement * speed;
 
 
-        transform.position = newPosition;
     }
 
     public void Checkbounds()
     {
-        //check boundary for all sides
-        if (transform.position.x > boundary.Right)
-        {
-            transform.position = new Vector2(boundary.Right, transform.position.y);
-        }
-        if (transform.position.x < boundary.Left)
-        {
-            transform.position = new Vector2(boundary.Left, transform.position.y);
-        }
-        if (transform.position.y < boundary.Top)
-        {
-            transform.position = new Vector2(transform.position.x, boundary.Top);
-        }
-        if (transform.position.y < boundary.Bottom)
-        {
-            transform.position = new Vector2(transform.position.x, boundary.Bottom);
-        }
+        
+        //checks the boundary
+        rbody.position = new Vector2(
+            Mathf.Clamp(rbody.position.x, boundary.Left, boundary.Right),
+            Mathf.Clamp(rbody.position.y, boundary.Bottom, boundary.Top));
+            
+
 
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Enemy")
+        {
+            Instantiate(explosion, other.transform.position, other.transform.rotation);
+        }
+        Instantiate(explosion, this.transform.position, this.transform.rotation);
+        Destroy(other.gameObject);
+        Destroy(this.gameObject);
+    }
 }

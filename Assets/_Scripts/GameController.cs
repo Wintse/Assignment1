@@ -10,6 +10,9 @@ public class GameController : MonoBehaviour
     public GameObject cloud;
     public int numClouds;
     public List<GameObject> clouds;
+    public GameObject enemy;
+    public int numEnemy;
+    public List<GameObject> enemies;
 
 
     // Start is called before the first frame update
@@ -33,11 +36,24 @@ public class GameController : MonoBehaviour
             clouds.Add(Instantiate(cloud));
         }
 
+        enemies = new List<GameObject>();
+
+        for (int enemyNum = 0; enemyNum < numEnemy; enemyNum++)
+        {
+            enemies.Add(Instantiate(enemy));
+        }
 
     }
 
     
 
 
-
 }
+
+/*
+ * music: Thats it for today: Some of the songs and/or sound efects in this project were created by ViRiX Dreamcore
+ * (David Mckee). www.virixcore.net for more information
+ * music: Mega Pixel Music Lab (melody++)
+ * gunfire by KuraiWolf
+ * explosion by TinyWorlds
+ */
