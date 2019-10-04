@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     public Boundary boundary;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,4 +57,5 @@ public class EnemyController : MonoBehaviour
         
     }
 
+   
 }

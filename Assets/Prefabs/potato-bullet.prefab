@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8145093175810052232}
   m_Layer: 0
   m_Name: potato-bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,6 +122,8 @@ MonoBehaviour:
     Right: 0
     Bottom: 0
     Left: 0
+  explosion: {fileID: 3812902314091764880, guid: e0e3dfc8d18572e4bad0feaa6a0c23d3,
+    type: 3}
 --- !u!70 &-8145093175810052232
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

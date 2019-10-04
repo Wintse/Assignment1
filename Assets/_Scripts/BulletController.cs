@@ -31,10 +31,9 @@ public class BulletController : MonoBehaviour
             Mathf.Clamp(rbody.position.x, boundary.Left, boundary.Right),
             Mathf.Clamp(rbody.position.y, boundary.Bottom, boundary.Top));
 
-
-
     }
-    private void OnTriggerEnter2D(Collider2D other)
+
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Enemy")
         {
@@ -44,5 +43,8 @@ public class BulletController : MonoBehaviour
         Instantiate(explosion, this.transform.position, this.transform.rotation);
         Destroy(other.gameObject);
         Destroy(this.gameObject);
+        //Destroy(explosion.gameObject);
+
     }
+
 }

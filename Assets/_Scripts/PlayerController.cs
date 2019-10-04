@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     public GameObject bulletspawn;
     public float fireRate = 0.5f;
-    //explosion
     [Header("explosion settings")]
     public GameObject explosion;
 
@@ -67,14 +66,20 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Enemy")
         {
             Instantiate(explosion, other.transform.position, other.transform.rotation);
+
         }
         Instantiate(explosion, this.transform.position, this.transform.rotation);
         Destroy(other.gameObject);
         Destroy(this.gameObject);
+       // Destroy(explosion.gameObject);
+
     }
+
+
+
 }
