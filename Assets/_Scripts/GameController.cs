@@ -14,38 +14,63 @@ public class GameController : MonoBehaviour
     public int numEnemy;
     public List<GameObject> enemies;
 
-    
+    [Header("UI settings")]
+    public Text scoreText;
+    public Text healthText;
+
+
+    //variables 
+    [SerializeField]
+    public int score;
+    public int health;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        health = 3;
+        score = 0;
+        //calls for scene config
         SceneConfiguration();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        ScoreUpdate();
+        LivesUpdate();
     }
 
     private void SceneConfiguration()
     {
+        //cloud object list
         clouds = new List<GameObject>();
-
+        //the number of clouds to spawn based on the number inputed
         for (int cloudNum = 0; cloudNum < numClouds; cloudNum++)
         {
             clouds.Add(Instantiate(cloud));
         }
-
+        //enemy object list
         enemies = new List<GameObject>();
-
+        //the number of enemies to spawn based on the number inputed
         for (int enemyNum = 0; enemyNum < numEnemy; enemyNum++)
         {
             enemies.Add(Instantiate(enemy));
         }
 
-        
 
+
+    }
+    
+    //updates the score and puts it to the text
+    public void ScoreUpdate()
+    {
+        scoreText.text = "SCORE: " + score;
+    }
+    //updates the lives and puts it to the text
+    public void LivesUpdate()
+    {
+        healthText.text = "HEALTH: " + health;
     }
 
 }

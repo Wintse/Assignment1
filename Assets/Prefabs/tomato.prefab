@@ -96,10 +96,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizSpeedRange:
-    max: 0.02
+    max: 0.03
     min: -0.01
   vertiSpeedRange:
-    max: 0.1
+    max: 0.2
     min: 0.02
   vertiSpeed: 0
   horziSpeed: 0
@@ -110,6 +110,7 @@ MonoBehaviour:
     Left: -4.27
   explosion: {fileID: 3812902314091764880, guid: e0e3dfc8d18572e4bad0feaa6a0c23d3,
     type: 3}
+  gameController: {fileID: 0}
 --- !u!58 &991297742702089709
 CircleCollider2D:
   m_ObjectHideFlags: 0

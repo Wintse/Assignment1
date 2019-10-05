@@ -19,10 +19,25 @@ public class EnemyController : MonoBehaviour
     [Header("explosion settings")]
     public GameObject explosion;
 
+    public GameController gameController;
+
     // Start is called before the first frame update
     void Start()
     {
         Reset();
+        //finding the Game Controller by the tag GameController
+        GameObject gameControllerObject = GameObject.FindWithTag("GameController");
+        if (gameControllerObject != null)
+        {
+            //get the gamecontroller so it can be used
+            gameController = gameControllerObject.GetComponent<GameController>();
+        }
+        //if gamecontroller can't be found
+        if (gameController == null)
+        {
+            //tell me its not there
+            Debug.Log("Cannot find 'GameController' script");
+        }
     }
 
     // Update is called once per frame
@@ -34,6 +49,7 @@ public class EnemyController : MonoBehaviour
 
     void Move()
     {
+
         Vector2 newPosition = new Vector2(horziSpeed, vertiSpeed);
         Vector2 currentPosition = transform.position;
 
@@ -43,6 +59,7 @@ public class EnemyController : MonoBehaviour
 
     void Reset()
     {
+        //reset the position of enemy randomly with random speed
         horziSpeed = Random.Range(horizSpeedRange.min, horizSpeedRange.max);
         vertiSpeed = Random.Range(vertiSpeedRange.min, vertiSpeedRange.max);
 
@@ -52,6 +69,7 @@ public class EnemyController : MonoBehaviour
 
     void Checkbound()
     {
+        //if enemy makes it to the bottom of the screen reset it so it come back down to attack player
         if (transform.position.y <= boundary.Bottom)
         {
             Reset();
@@ -61,21 +79,34 @@ public class EnemyController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        //using explosion prefab
         if (other.tag == "Player")
         {
+            //explosion for player and enemy
             Instantiate(explosion, other.transform.position, other.transform.rotation);
             Instantiate(explosion, this.transform.position, this.transform.rotation);
-
+            //subtrack from player's lives if they have more then 1 
+            if(gameController.health > 1)
+            {
+                gameController.health--;
+            }
+            else
+            {
+                gameController.health = 0;
+                Destroy(other.gameObject);
+            }
         }
         if (other.tag == "Bullet")
         {
+            //explosion for the enemy being destroyed
             Instantiate(explosion, other.transform.position, other.transform.rotation);
+            //add to total score
+            gameController.score += 100;
+            Destroy(other.gameObject);
 
         }
-        //Instantiate(explosion, this.transform.position, this.transform.rotation);
-        Destroy(other.gameObject);
-       // Destroy(this.gameObject);
-        // Destroy(explosion.gameObject);
+        
+        //reset the enemy, its not destroyed
         Reset();
 
     }

@@ -21,16 +21,11 @@ public class BulletController : MonoBehaviour
 
     void Update()
     {
-        Checkbounds();
-    }
-    public void Checkbounds()
-    {
-
         if (rbody.position.y > boundary.Top)
         {
             Destroy(this.gameObject);
         }
-
     }
+    
 
 }

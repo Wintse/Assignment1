@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6475434658768313851}
   m_Layer: 0
   m_Name: grass
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,5 +94,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vSpeed: 0.3
-  resetPos: 5
-  resetPoint: -5
+  resetPos: 14
+  resetPoint: -15
