@@ -49,7 +49,7 @@ public class EnemyController : MonoBehaviour
 
     void Move()
     {
-
+        //move the enemy
         Vector2 newPosition = new Vector2(horziSpeed, vertiSpeed);
         Vector2 currentPosition = transform.position;
 
@@ -59,10 +59,10 @@ public class EnemyController : MonoBehaviour
 
     void Reset()
     {
-        //reset the position of enemy randomly with random speed
+        //randomly get a speed based on range
         horziSpeed = Random.Range(horizSpeedRange.min, horizSpeedRange.max);
         vertiSpeed = Random.Range(vertiSpeedRange.min, vertiSpeedRange.max);
-
+        //reset the position of enemy randomly with random speed
         float randomXPos = Random.Range(boundary.Left, boundary.Right);
         transform.position = new Vector2(randomXPos, Random.Range(boundary.Top, boundary.Top + 2.0f));
     }
@@ -92,6 +92,7 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
+                //if health is = 0, destory the player
                 gameController.health = 0;
                 Destroy(other.gameObject);
             }

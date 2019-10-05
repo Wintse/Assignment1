@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    //game objects
     [Header("Game Objects")]
     public GameObject cloud;
     public int numClouds;
@@ -14,12 +15,13 @@ public class GameController : MonoBehaviour
     public int numEnemy;
     public List<GameObject> enemies;
 
+    //for text
     [Header("UI settings")]
     public Text scoreText;
     public Text healthText;
 
 
-    //variables 
+    //variables, serialized so they can be used in enemy controller
     [SerializeField]
     public int score;
     public int health;
@@ -28,8 +30,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = 3;
-        score = 0;
+        
         //calls for scene config
         SceneConfiguration();
     }
@@ -71,6 +72,11 @@ public class GameController : MonoBehaviour
     public void LivesUpdate()
     {
         healthText.text = "HEALTH: " + health;
+        //load the end/restart scene
+        if (health == 0)
+        {
+            SceneManager.LoadScene("End");
+        }
     }
 
 }
@@ -82,5 +88,5 @@ public class GameController : MonoBehaviour
  * gunfire by KuraiWolf
  * explosion by TinyWorlds
  * explosion art by Gumichan01
- * potato, tomato, grass, bullet, cloud, by me
+ * potato, tomato, grass, bullet, cloud, start screen and end screen by me (Victoria Liu)
  */

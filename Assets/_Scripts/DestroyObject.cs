@@ -6,6 +6,7 @@ public class DestroyObject : MonoBehaviour
 {
     public void DestroyThis()
     {
+        //destroys bullet and explosion
         Destroy(this.gameObject);
     }
 }

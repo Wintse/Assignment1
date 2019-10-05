@@ -15,12 +15,14 @@ public class BulletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //move the bullet
         rbody = GetComponent<Rigidbody2D>();
         rbody.velocity = transform.up * speed;
     }
 
     void Update()
     {
+        //if bullet reaches the boundary destory it
         if (rbody.position.y > boundary.Top)
         {
             Destroy(this.gameObject);

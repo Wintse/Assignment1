@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         myTime += Time.deltaTime;
         if(Input.GetButton("Fire1") && myTime > fireRate)
         {
-            //bullet
+            //bullet's position and orientation 
             Instantiate(bullet, bulletspawn.transform.position, bulletspawn.transform.rotation).GetComponent<Rigidbody>(); ;
             myTime = 0.0f;
             
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        //reads input
+        //reads input of horizontal and vertical
         float horiz = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
 
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
     public void Checkbounds()
     {
         
-        //checks the boundary
+        //checks the boundary and makes sure that it doesn't go out of them
         rbody.position = new Vector2(
             Mathf.Clamp(rbody.position.x, boundary.Left, boundary.Right),
             Mathf.Clamp(rbody.position.y, boundary.Bottom, boundary.Top));    

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GrassController : MonoBehaviour
 {
-    //variables
+    //variables of speeeed
     public float vSpeed = 0.3f;
     public float resetPos = 5.0f;
     public float resetPoint = -5.0f;
@@ -25,9 +25,10 @@ public class GrassController : MonoBehaviour
     //for moving the grass
     void Move()
     {
+        //new position and finding the current position
         Vector2 newPosition = new Vector2(0.0f, vSpeed);
         Vector2 currentPosition = transform.position;
-
+        //moves the grass to the new position
         currentPosition -= newPosition;
         transform.position = currentPosition;
 
@@ -35,10 +36,12 @@ public class GrassController : MonoBehaviour
 
     void Reset()
     {
+        //resets the position of grass
         transform.position = new Vector2(0.0f, resetPos);
     }
     void CheckBounds()
     {
+        //check the boundaries to see when it should call the reset function.
         if(transform.position.y <= resetPoint)
         {
             Reset();
