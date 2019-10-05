@@ -21,29 +21,15 @@ public class BulletController : MonoBehaviour
 
     void Update()
     {
-        
+        Checkbounds();
     }
     public void Checkbounds()
     {
 
-        //checks the boundary
-        rbody.position = new Vector2(
-            Mathf.Clamp(rbody.position.x, boundary.Left, boundary.Right),
-            Mathf.Clamp(rbody.position.y, boundary.Bottom, boundary.Top));
-
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Enemy")
+        if (rbody.position.y > boundary.Top)
         {
-            Instantiate(explosion, other.transform.position, other.transform.rotation);
-
+            Destroy(this.gameObject);
         }
-        Instantiate(explosion, this.transform.position, this.transform.rotation);
-        Destroy(other.gameObject);
-        Destroy(this.gameObject);
-        //Destroy(explosion.gameObject);
 
     }
 

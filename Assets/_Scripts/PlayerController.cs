@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rbody;
     public float myTime = 0.0f;
 
+
+
     public GameController gameController;
 
 
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(bullet, bulletspawn.transform.position, bulletspawn.transform.rotation).GetComponent<Rigidbody>(); ;
             myTime = 0.0f;
+            
         }
         Checkbounds();
     }
@@ -66,19 +69,19 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Enemy")
-        {
-            Instantiate(explosion, other.transform.position, other.transform.rotation);
+    //void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.tag == "Enemy")
+    //    {
+    //        Instantiate(explosion, other.transform.position, other.transform.rotation);
 
-        }
-        Instantiate(explosion, this.transform.position, this.transform.rotation);
-        Destroy(other.gameObject);
-        Destroy(this.gameObject);
-       // Destroy(explosion.gameObject);
+    //    }
+    //    Instantiate(explosion, this.transform.position, this.transform.rotation);
+    //    //Destroy(other.gameObject);
+    //    Destroy(this.gameObject);
+    //   // Destroy(explosion.gameObject);
 
-    }
+    //}
 
 
 

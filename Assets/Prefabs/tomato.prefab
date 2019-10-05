@@ -96,10 +96,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizSpeedRange:
-    max: 0.03
+    max: 0.02
     min: -0.01
   vertiSpeedRange:
-    max: 0.04
+    max: 0.1
     min: 0.02
   vertiSpeed: 0
   horziSpeed: 0
@@ -108,6 +108,8 @@ MonoBehaviour:
     Right: 4.06
     Bottom: -4.31
     Left: -4.27
+  explosion: {fileID: 3812902314091764880, guid: e0e3dfc8d18572e4bad0feaa6a0c23d3,
+    type: 3}
 --- !u!58 &991297742702089709
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -118,7 +120,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.05672717, y: 0.1250099}

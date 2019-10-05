@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public int numEnemy;
     public List<GameObject> enemies;
 
+    
 
     // Start is called before the first frame update
     void Start()
@@ -43,17 +44,18 @@ public class GameController : MonoBehaviour
             enemies.Add(Instantiate(enemy));
         }
 
+        
+
     }
-
-    
-
 
 }
 
 /*
- * music: Thats it for today: Some of the songs and/or sound efects in this project were created by ViRiX Dreamcore
+ * Thats it for today by Some of the songs and/or sound efects in this project were created by ViRiX Dreamcore
  * (David Mckee). www.virixcore.net for more information
- * music: Mega Pixel Music Lab (melody++)
+ * music by Mega Pixel Music Lab (melody++)
  * gunfire by KuraiWolf
  * explosion by TinyWorlds
+ * explosion art by Gumichan01
+ * potato, tomato, grass, bullet, cloud, by me
  */

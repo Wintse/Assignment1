@@ -16,6 +16,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     public Boundary boundary;
 
+    [Header("explosion settings")]
+    public GameObject explosion;
 
     // Start is called before the first frame update
     void Start()
@@ -57,5 +59,24 @@ public class EnemyController : MonoBehaviour
         
     }
 
-   
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            Instantiate(explosion, other.transform.position, other.transform.rotation);
+            Instantiate(explosion, this.transform.position, this.transform.rotation);
+
+        }
+        if (other.tag == "Bullet")
+        {
+            Instantiate(explosion, other.transform.position, other.transform.rotation);
+
+        }
+        //Instantiate(explosion, this.transform.position, this.transform.rotation);
+        Destroy(other.gameObject);
+       // Destroy(this.gameObject);
+        // Destroy(explosion.gameObject);
+        Reset();
+
+    }
 }
