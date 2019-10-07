@@ -66,8 +66,7 @@ public class EnemyController : MonoBehaviour
         Vector2 newPosition = new Vector2(horziSpeed, vertiSpeed);
         Vector2 currentPosition = transform.position;
         //take the current position and subtrack the new position since the the enemy is moving down
-        //currentPosition -= newPosition;
-        //the new position the enemy should be at
+        //make this the new position
         transform.position = currentPosition - newPosition;
     }
 

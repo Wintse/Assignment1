@@ -34,9 +34,9 @@ public class GrassController : MonoBehaviour
         //new position and finding the current position
         Vector2 newPosition = new Vector2(0.0f, vSpeed);
         Vector2 currentPosition = transform.position;
-        //moves the grass to the new position by subtracking the 
-        currentPosition -= newPosition;
-        transform.position = currentPosition;
+        //moves the grass to the new position by subtracking the current position by the new one
+        //make the grass have this new positon
+        transform.position = currentPosition - newPosition;
 
     }
 

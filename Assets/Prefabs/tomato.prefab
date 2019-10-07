@@ -99,10 +99,8 @@ MonoBehaviour:
     max: 0.03
     min: -0.01
   vertiSpeedRange:
-    max: 0.3
+    max: 0.2
     min: 0.02
-  vertiSpeed: 0
-  horziSpeed: 0
   boundary:
     Top: 4
     Right: 4.06

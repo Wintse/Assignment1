@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButton("Fire1") && myTime > fireRate)
         {
             //bullet's position and orientation 
-            Instantiate(bullet, bulletspawn.transform.position, bulletspawn.transform.rotation).GetComponent<Rigidbody>(); ;
+            Instantiate(bullet, bulletspawn.transform.position, bulletspawn.transform.rotation);
             myTime = 0.0f;
             
         }
