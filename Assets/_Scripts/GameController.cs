@@ -4,13 +4,28 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/*
+ * Victoria Liu
+ * This is the game controller
+ * it deals with UI such as score and health
+ * instantiates enemies
+ * some parts taken from tom's code from mail pilot
+ * 
+ * art and music notes:
+ * Thats it for today by Some of the songs and/or sound efects in this project were created by ViRiX Dreamcore
+ * (David Mckee). www.virixcore.net for more information
+ * unused music(melody++) by Mega Pixel Music Lab 
+ * gunfire by KuraiWolf
+ * explosion by TinyWorlds
+ * explosion art by Gumichan01
+ * potato, tomato, grass, bullet, button, start screen and end screen by me (Victoria Liu)
+ */
+
+
 public class GameController : MonoBehaviour
 {
     //game objects
     [Header("Game Objects")]
-    public GameObject cloud;
-    public int numClouds;
-    public List<GameObject> clouds;
     public GameObject enemy;
     public int numEnemy;
     public List<GameObject> enemies;
@@ -44,13 +59,7 @@ public class GameController : MonoBehaviour
 
     private void SceneConfiguration()
     {
-        //cloud object list
-        clouds = new List<GameObject>();
-        //the number of clouds to spawn based on the number inputed
-        for (int cloudNum = 0; cloudNum < numClouds; cloudNum++)
-        {
-            clouds.Add(Instantiate(cloud));
-        }
+        
         //enemy object list
         enemies = new List<GameObject>();
         //the number of enemies to spawn based on the number inputed
@@ -58,8 +67,6 @@ public class GameController : MonoBehaviour
         {
             enemies.Add(Instantiate(enemy));
         }
-
-
 
     }
     
@@ -81,12 +88,3 @@ public class GameController : MonoBehaviour
 
 }
 
-/*
- * Thats it for today by Some of the songs and/or sound efects in this project were created by ViRiX Dreamcore
- * (David Mckee). www.virixcore.net for more information
- * music by Mega Pixel Music Lab (melody++)
- * gunfire by KuraiWolf
- * explosion by TinyWorlds
- * explosion art by Gumichan01
- * potato, tomato, grass, bullet, cloud, start screen and end screen by me (Victoria Liu)
- */

@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Victoria Liu
+ * the boundary
+ * can be used in multiple other areas so you dont have to continuously rewrite it
+ */
+
+
 namespace Util
 {
     [System.Serializable]

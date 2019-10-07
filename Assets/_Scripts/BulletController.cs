@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Util;
+
+/*
+ * Victoria Liu
+ * bullet controller
+ * moves the bullet when player shoots
+ */
+
 public class BulletController : MonoBehaviour
 {
     //variables

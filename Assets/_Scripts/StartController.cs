@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/*
+ * Victoria Liu
+ * start controller
+ * starting scene, will change to the main scene when button is clicked
+ */
 public class StartController : MonoBehaviour
 {
 

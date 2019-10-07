@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Victoria Liu
+ * Grass controller
+ * from Tom's code from Mail Pilot
+ * moves the background so it looks like it is moving
+ */
 public class GrassController : MonoBehaviour
 {
     //variables of speeeed
@@ -28,7 +34,7 @@ public class GrassController : MonoBehaviour
         //new position and finding the current position
         Vector2 newPosition = new Vector2(0.0f, vSpeed);
         Vector2 currentPosition = transform.position;
-        //moves the grass to the new position
+        //moves the grass to the new position by subtracking the 
         currentPosition -= newPosition;
         transform.position = currentPosition;
 

@@ -353,8 +353,6 @@ MonoBehaviour:
   bullet: {fileID: 8846037188577618241, guid: d1a8e76ec45f7ae4596f2af94a793533, type: 3}
   bulletspawn: {fileID: 528693202}
   fireRate: 0.3
-  explosion: {fileID: 3812902314091764880, guid: e0e3dfc8d18572e4bad0feaa6a0c23d3,
-    type: 3}
   myTime: 0
   gameController: {fileID: 1210461185}
 --- !u!212 &1035159775
@@ -414,7 +412,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035159773}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15, y: -1.79, z: 0}
+  m_LocalPosition: {x: 0, y: -2.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 528693203}
@@ -554,11 +552,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c1ec1250f013d46b39ccc87d4c5685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloud: {fileID: 8975717669554032085, guid: 4b6bf1523267f9446af23c6b9e7943df, type: 3}
-  numClouds: 2
-  clouds: []
   enemy: {fileID: 3155948491016058492, guid: 8acd739a0fa53c94e9e453a2aa927313, type: 3}
-  numEnemy: 4
+  numEnemy: 5
   enemies: []
   scoreText: {fileID: 115162424}
   healthText: {fileID: 2073639760}
@@ -592,7 +587,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.237
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

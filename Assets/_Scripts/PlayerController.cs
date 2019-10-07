@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using Util;
 
+/*
+ * Victoria Liu
+ * player controller
+ * moves the player
+ * shoots the bullet game object when the mouse is clicked
+ */
 public class PlayerController : MonoBehaviour
 {
     //speed and boundary
     public float speed;
     public Boundary boundary;
-    //bullet shooting settings
+    //bullet shooting settings. the bullet object, spawn and fire rate
     [Header("shooting settings")]
     public GameObject bullet;
     public GameObject bulletspawn;
     public float fireRate = 0.5f;
-    //explosion
-    [Header("explosion settings")]
-    public GameObject explosion;
+    
 
     //rigidbody
     private Rigidbody2D rbody;
     public float myTime = 0.0f;
 
-
-    public GameController gameController;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +36,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //for firing the bullet. will move it in the y direction
+        //for firing the bullet. will move it in the y direction up
         //multiplies by units per second
         myTime += Time.deltaTime;
         if(Input.GetButton("Fire1") && myTime > fireRate)

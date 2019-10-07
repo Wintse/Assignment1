@@ -3,23 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using Util;
 
+/*
+ * Victoria Liu
+ * Enemy Controller
+ * some code from tom's code from Mail Pilot
+ * moves the enemy, destroys bullets on contact and resets the tomato and adds points to score. 
+ * explosion goes off and enemy will reset if player is hit and subtracks from health
+ * if player has no more health the player is destoryed 
+ */
 public class EnemyController : MonoBehaviour
 {
+    //range for speed
     [SerializeField]
     public Speed horizSpeedRange;
     [SerializeField]
     public Speed vertiSpeedRange;
+    
 
-    public float vertiSpeed;
-    public float horziSpeed;
-
+    //boundary from Boundary
     [SerializeField]
     public Boundary boundary;
 
+    //explosion game object
     [Header("explosion settings")]
     public GameObject explosion;
-
+    //the game controller so it can get to the the score and health
     public GameController gameController;
+
+    //the horizontal and vertical speed
+    float vertiSpeed;
+    float horziSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -49,12 +62,13 @@ public class EnemyController : MonoBehaviour
 
     void Move()
     {
-        //move the enemy
+        //the newposition is the position it will to next. current position is where the enemy is at that point in time
         Vector2 newPosition = new Vector2(horziSpeed, vertiSpeed);
         Vector2 currentPosition = transform.position;
-
-        currentPosition -= newPosition;
-        transform.position = currentPosition;
+        //take the current position and subtrack the new position since the the enemy is moving down
+        //currentPosition -= newPosition;
+        //the new position the enemy should be at
+        transform.position = currentPosition - newPosition;
     }
 
     void Reset()
@@ -69,11 +83,12 @@ public class EnemyController : MonoBehaviour
 
     void Checkbound()
     {
-        //if enemy makes it to the bottom of the screen reset it so it come back down to attack player
-        if (transform.position.y <= boundary.Bottom)
+        //if enemy makes it to the bottom, left or right of the screen reset it so it come back down to attack player
+        if (transform.position.y <= boundary.Bottom || transform.position.x <= boundary.Left - 1.0f || transform.position.x >= boundary.Right + 1.0f)
         {
             Reset();
         }
+        
         
     }
 
@@ -92,7 +107,7 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                //if health is = 0, destory the player
+                //if health is = 0, destroy the player
                 gameController.health = 0;
                 Destroy(other.gameObject);
             }
